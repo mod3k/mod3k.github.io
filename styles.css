@@ -3,10 +3,13 @@ body {
   color: gold;
   font-family: "Courier New";
   text-align: center;
+  font-size: 200%;
 }
+
 a {
   color: gold;
 }
+
 audio::-webkit-media-controls-panel {
   background-color: gold;
 }
