@@ -4,9 +4,32 @@ body {
   font-family: "Courier New";
   text-align: center;
 }
-h1 {
-  
+a {
+  color: gold;
 }
-p {
-  
+audio::-webkit-media-controls-panel {
+  background-color: gold;
+}
+
+audio::-webkit-media-controls-mute-button {
+  color: black;
+}
+
+audio::-webkit-media-controls-play-button {
+  color: black;
+}
+
+audio::-webkit-media-controls-current-time-display {
+  color: black;
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+  color: black;
+}
+
+audio::-webkit-media-controls-timeline {
+  background-color: gold;
+  border-radius: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
