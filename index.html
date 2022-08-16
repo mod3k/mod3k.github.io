@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<link rel="stylesheet" href="styles.css">
 	</head>
@@ -23,10 +23,12 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
         <script type="text/javascript">
             
+			var goToUrl = "00";
+			
 			function startLogin(url) {
 				document.getElementById("mainDiv").style.display = "none";
 				document.getElementById("loginDiv").style.display = "inline";
-				//alert(url);
+				goToUrl = url;
 			}
 			
 			"use strict"
