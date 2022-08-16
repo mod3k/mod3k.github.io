@@ -8,6 +8,8 @@ body {
 
 a {
   color: gold;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 audio::-webkit-media-controls-panel {

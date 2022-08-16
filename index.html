@@ -4,12 +4,73 @@
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
-		<h1>Niedrig und Breit</h1>
-		<p style="font-size:60%;">Wir reden eh nur Scheiß</p>
-		<br><br>
-		<a href="./saukalt/index.html">Die dreckigste Stadt, die du nicht besuchen darfst</a>
-		<br><br>
-		<a href="./pingukacke/index.html">Pinguine kacken wie hart?</a>
+	
+		<div id="mainDiv" style="">
+			<h1>Niedrig und Breit</h1>
+			<p style="font-size:60%;">Wir reden eh nur Scheiß</p>
+			<br><br>
+			<a onclick="startLogin('01')">Die dreckigste Stadt, die du nicht besuchen darfst</a>
+			<br><br>
+			<a onclick="startLogin('02')">Pinguine kacken wie hart?</a>
+		</div>
+		
+		<div id="loginDiv" style="display: none;">
+			<h1>Passwort, bittsche!</h1>
+			<input data-id="password" type="password" placeholder="password"/>
+			<button data-id="button" type="button">Continue</button>
+		</div>
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
+        <script type="text/javascript">
+            
+			function startLogin(url) {
+				document.getElementById("mainDiv").style.display = "none";
+				document.getElementById("loginDiv").style.display = "inline";
+				//alert(url);
+			}
+			
+			"use strict"
+            var button = document.querySelectorAll('[data-id="button"]')
+            var password = document.querySelectorAll('[data-id="password"]')
+
+            function login(secret) {
+                var hash = sha1(secret)
+                var url = hash + "/index.html"
+                var alert = document.querySelectorAll('[data-id="alert"]')
+
+                var request = new XMLHttpRequest()
+                request.open('GET', url, true)
+
+                request.onload = function () {
+                    if (request.status >= 200 && request.status < 400) {
+                        window.location = url
+                    } else {
+                        parent.location.hash = hash
+                        alert[0].style.display = 'block'
+                        password[0].setAttribute('placeholder', 'Incorrect password')
+                        password[0].value = ''
+                    }
+                }
+                request.onerror = function () {
+                    parent.location.hash = hash
+                    alert[0].style.display = 'block'
+                    password[0].setAttribute('placeholder', 'Incorrect password')
+                    password[0].value = ''
+                }
+                request.send()
+            }
+
+            button[0].addEventListener("click", function () {
+                login(password[0].value)
+            })
+
+            document.onkeydown = function (e) {
+                e = e || window.event
+                if (e.keyCode == 13) {
+                    login(password[0].value)
+                }
+            }
+        </script>
 		
 	</body>
 </html>
