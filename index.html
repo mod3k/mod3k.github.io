@@ -14,7 +14,7 @@
 			<a onclick="startLogin('02')">Pinguine kacken wie hart?</a>
 		</div>
 		
-		<div data-id="alert" style="display: none;">You entered the wrong password</div>
+		<div data-id="alert" style="display: none;">Oida, foisches Passwort!</div>
 		
 		<div id="loginDiv" style="display: none;">
 			<h1>Passwort, bittsche!</h1>
@@ -51,14 +51,14 @@
                     } else {
                         parent.location.hash = hash
                         alert[0].style.display = 'block'
-                        password[0].setAttribute('placeholder', 'Incorrect password')
+                        password[0].setAttribute('placeholder', 'Foisch')
                         password[0].value = ''
                     }
                 }
                 request.onerror = function () {
                     parent.location.hash = hash
                     alert[0].style.display = 'block'
-                    password[0].setAttribute('placeholder', 'Incorrect password')
+                    password[0].setAttribute('placeholder', 'Foisch')
                     password[0].value = ''
                 }
                 request.send()
