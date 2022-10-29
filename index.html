@@ -9,11 +9,13 @@
 			<h1>Niedrig und Breit</h1>
 			<p style="font-size:60%;">Wir reden eh nur Scheiß</p>
 			<br><br>
-			<a onclick="startLogin('01')">Die dreckigste Stadt, die du nicht besuchen darfst</a>
+			<a onclick="goToLogin('00')">Die dreckigste Stadt, die du nicht besuchen darfst</a>
 			<br><br>
-			<a onclick="startLogin('02')">Pinguine kacken wie hart?</a>
+			<a onclick="goToLogin('01')">Pinguine kacken wie hart?</a>
 			<br><br>
-			<a onclick="startLogin('03')">Der Shrimp mit Blitzattacke</a>
+			<a onclick="goToLogin('02')">Der Shrimp mit Blitzattacke</a>
+			<br><br>
+			<a onclick="goToLogin('03')">Vui oage WMs</a>
 		</div>
 		
 		<div data-id="alert" style="display: none;">Oida, foisches Passwort!</div>
@@ -27,12 +29,19 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js"></script>
         <script type="text/javascript">
             
-			var goToUrl = "00";
+			var queryString = window.location.href.split("?");
 			
-			function startLogin(url) {
+			//console.log(queryString);
+			
+			function goToLogin(url){
+				window.location = window.location + "?" + url
+			}
+			
+			if (queryString.length > 1) {
 				document.getElementById("mainDiv").style.display = "none";
 				document.getElementById("loginDiv").style.display = "inline";
-				goToUrl = url;
+				goToUrl = queryString[1].slice(0,2);
+				console.log(goToUrl);
 			}
 			
 			"use strict"
@@ -41,8 +50,10 @@
 
             function login(secret) {
                 var hash = sha1(secret)
-                var url = hash + "/" + goToUrl + ".html"
+                var url = "./" + hash + "/" + goToUrl + ".html"
                 var alert = document.querySelectorAll('[data-id="alert"]')
+				
+				console.log(url)
 
                 var request = new XMLHttpRequest()
                 request.open('GET', url, true)
